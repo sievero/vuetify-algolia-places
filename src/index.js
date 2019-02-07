@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign,no-underscore-dangle */
 
-import VuetifyAlgoliaPlaces from './VuetifyAlgoliaPlaces.vue';
+import { AlgoliaPlacesDirective } from './directive';
 
 const defaultOptions = {
   algolia: {
@@ -9,17 +9,10 @@ const defaultOptions = {
   },
 };
 
-const install = (Vue, options = {}) => {
-  options = Object.assign({}, defaultOptions, options);
+const install = (Vue, installOptions = {}) => {
+  const options = Object.assign({}, defaultOptions, installOptions);
 
-  Vue.$vuetifyAlgoliaPlacesOptions = options;
-  Vue.mixin({
-    created() {
-      this.$vuetifyAlgoliaPlacesOptions = options;
-    },
-  });
-
-  Vue.component('vuetify-algolia-places', VuetifyAlgoliaPlaces);
+  Vue.directive('algolia-places', AlgoliaPlacesDirective(options));
 };
 
 export default install;

@@ -2,17 +2,12 @@
   <v-autocomplete
     v-model="place"
     :items="places"
-    :loading="loading"
     :search-input.sync="query"
     :filter="filter"
     :disabled="disabled"
     :required="required"
     :rules="validationRules"
     :label="label"
-    single-line
-    return-object
-    item-text="value"
-    append-icon="location_on"
     @input="onInput"
   >
     <template slot="item" slot-scope="data">

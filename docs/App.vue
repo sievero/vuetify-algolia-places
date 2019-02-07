@@ -8,12 +8,13 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm10 md8 lg6>
             <h1 class="display-3 text-xs-center">Vuetify Algolia Places</h1>
-            <vuetify-algolia-places
-              v-model="place"
-              v-bind="options"
-              class="mt-5 mb-2"
-              @error="onError"
-            />
+            <v-autocomplete v-model="place" v-algolia-places="options" class="mt-5 mb-2" />
+            <!--<vuetify-algolia-places-->
+            <!--v-model="place"-->
+            <!--v-bind="options"-->
+            <!--class="mt-5 mb-2"-->
+            <!--@error="onError"-->
+            <!--/>-->
             <code v-if="typeof place === 'object'" class="mb-5 pa-3 d-block">{{ JSON.stringify(place, null, 2) }}</code>
             <v-card>
               <v-card-title>
@@ -22,13 +23,13 @@
               <v-card-text>
                 <v-layout>
                   <v-flex>
-                    <v-switch v-model="options.disabled" label="Disabled" color="primary"/>
-                    <v-switch v-model="options.required" label="Required" color="primary"/>
+                    <v-switch v-model="options.disabled" label="Disabled" color="primary" />
+                    <v-switch v-model="options.required" label="Required" color="primary" />
                   </v-flex>
                   <v-flex>
-                    <v-text-field v-model="options.label" label="Label"/>
-                    <v-select v-model="options.language" :items="languages" label="Language"/>
-                    <v-select v-model="options.countries" :items="countries" multiple label="Countries"/>
+                    <v-text-field v-model="options.label" label="Label" />
+                    <v-select v-model="options.language" :items="languages" label="Language" />
+                    <v-select v-model="options.countries" :items="countries" multiple label="Countries" />
                   </v-flex>
                 </v-layout>
               </v-card-text>
